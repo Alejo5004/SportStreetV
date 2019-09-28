@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="./src/assets/custom.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <div id="app">
+        <header>
+            <div class="container-fluid">
+                <div class="row bg-dark p-3">
+                    <div class="col-6">
+                        <span class="text-white">Sport Street V</span>
+                    </div>
+                    <div class="col-6">
+                        <ul class="nav justify-content-end">
+                            <li class="nav-item">
+                                <a class="nav-link active text-white" href="#">Componentes Internos</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="#">Componentes externos</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="#">Periféricos</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <section>
+            <div class="container mt-5">
+                <div class="float-center">
+                    <h1>Tienda Online de Pc`s</h1>
+                    <p>
+                        Te encantraria tener una pc que sea la enviadia de todos, pues aqui podras encontrar todos los componentes que necesites y al mejor precio
+                    </p>
+                </div>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item"><a href="#">Library</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Data</li>
+                    </ol>
+                </nav>
+                <div class="row">
+                    <template v-for="tarjeta in tarjetas">
+                        <div class="col-4 mb-3">
+                        <!-- <div class="card-deck mb-3"> -->
+                            <div class="card">
+                                <div class="card-header bg-dark text-white">
+                                    <h5 class="text-center">
+                                        {{ tarjeta.titulo }}
+                                    </h5>
+                                </div>
+                                <figure class="mt-2 w-75" style="border-bottom: 1px #dfdfdf solid">
+                                    <img v-bind:src="tarjeta.imagen" class="card-img-top" alt="...">
+                                </figure>
+                                <div class="card-body">
+                                    <p class="card-text">
+                                        <p>
+                                            <button class="btn btn-secondary btn-block" type="button" @click="hoverCard">
+                                                <h6>Descripción</h6>
+                                            </button>
+                                            <!-- Button trigger modal -->
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalScrollable">
+                                                Launch demo modal
+                                            </button>
+                                            <!-- <button class="btn btn-secondary btn-block" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                                <h6>Descripción</h6>
+                                            </button> -->
+                                            
+                                        </p>
+                                        <!-- <div class="collapse" id="collapseExample"> -->
+                                            <!-- <div class="card card-body"> -->
+                                            <div v-if="mostrar">
+                                                <ul v-for="descripcion in tarjeta.descripcion">
+                                                    <hover-card :descripcion="descripcion">
+                                                        <li>{{ descripcion }}</li>
+                                                    </hover-card>
+                                                </ul>
+                                            </div>
+                                        <!-- </div> -->
+                                        <a :href="tarjeta.url" class="btn btn-success btn-block btn-lg mt-3">COMPRA YA! EN AMAZON</a>
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </template>
+                </div>
+            </div>
+        </section>
+        <footer class="bg-dark mt-5">
+            <div class="container-fluid">
+                <div class="row text-white">
+
+                    <div class="col-4">
+                        Hola
+                    </div>
+                    <div class="col-4">
+                        Hola
+                    </div>
+                    <div class="col-4">
+                        Hola
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <!-- vue -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+    Vue.component('hover-card', {
+        props: [ 'descripcion' ],
+        methods: {
+            
+        },
+        template: `
+        
+    <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalScrollableTitle">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+        <div class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>{{descripcion}}</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+                </div>
+            </div>
+        </div>
+        `,
+        
+    })
+    let app = new Vue({
+        el: '#app',
+        data: {
+            mostrar: false,
+            tarjetas: [
+                {
+                    imagen: 'https://m.media-amazon.com/images/I/81D46VNLb9L._AC_UY218_ML3_.jpg',
+                    titulo: 'Tarjeta gráfica EVGA GeForce RTX 2070 Black Gaming, con ventilador Dual HDB',
+                    url: '1',
+                    descripcion: [
+                        'Circuito integrado: AMD Radeon RX 580',
+                        'Memoria de vídeo: 8 GB DDR5',
+                        '1386 MHz + (OC)/1366 MHz (reloj verdadero)',
+                        'XFX placa trasera personalizada',
+                        'tecnología de refrigeración XFX disipación doble',
+                    ],
+                },
+                {
+                    imagen: 'https://images-na.ssl-images-amazon.com/images/I/71WA8Pm9AoL._AC_SL1200_.jpg',
+                    titulo: 'Tarjeta gráfica EVGA GeForce RTX 2070 Black Gaming, con ventilador Dual HDB',
+                    url: '2',
+                    descripcion: [
+                        'La arquitectura NVIDIA Turing GPU ofrece un rendimiento hasta 3 veces más rápido que las tarjetas gráficas de la generación anterior.',
+                        'Real-Time RAY TRACING in games for cutting-edge, hyper-realistic graphics',
+                        'Los ventiladores duales HDB ofrecen un mayor rendimiento de refrigeración y un ruido acústico mucho más silencioso.',
+                        'El LED RGB ajustable ofrece opciones de configuración para todas las necesidades de iluminación de su PC.',
+                        'Diseñado para EVGA Precision X1 – La nueva utilidad de afinación de EVGA supervisa tu tarjeta gráfica y te da la potencia para overclock como un profesional.',
+                    ],
+                },
+                {
+                    imagen: 'https://images-na.ssl-images-amazon.com/images/I/71Tw4qKcixL._AC_SL1500_.jpg',
+                    titulo: 'Gigabyte GeForce GTX 1660 OC 6G, 2 ventiladores Windforce, 6 GB 192 bit GDDR5, Gv-N1660OC-6GD',
+                    url: '3',
+                    descripcion: [
+                        'Alimentado por GeForce GTX 1660 integrado con GDDR5 de 6 GB',
+                        'Windforce 2 sistemas de refrigeración con ventiladores giratorios alternativos',
+                        'Controles intuitivos con motor AORUS',
+                        '6 GB 192-bit GDDR5',
+                        '1 x HDMI, 3 x DisplayPort.',
+                    ],
+                },
+                {
+                    imagen: 'https://images-na.ssl-images-amazon.com/images/I/71Tw4qKcixL._AC_SL1500_.jpg',
+                    titulo: 'Gigabyte GeForce GTX 1660 OC 6G, 2 ventiladores Windforce, 6 GB 192 bit GDDR5, Gv-N1660OC-6GD',
+                    url: '3',
+                    descripcion: [
+                        'Alimentado por GeForce GTX 1660 integrado con GDDR5 de 6 GB',
+                        'Windforce 2 sistemas de refrigeración con ventiladores giratorios alternativos',
+                        'Controles intuitivos con motor AORUS',
+                        '6 GB 192-bit GDDR5',
+                        '1 x HDMI, 3 x DisplayPort.',
+                    ],
+                },
+            ]
+        },
+        methods: {
+            hoverCard: function(){
+                if(this.mostrar){
+
+                    this.mostrar += ''
+                    this.mostrar += false
+                }else{
+                    this.mostrar += ''
+                    this.mostrar += true
+                }
+                
+            }
+        },
+
+    })
+    </script>
+    <!-- bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>

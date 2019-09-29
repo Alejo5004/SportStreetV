@@ -6,3 +6,6 @@ figure{
 .title{
     font-family: 'Abril Fatface', cursive;
 }
+.border-img{
+    border-top: 1px #dfdfdf solid;
+}

@@ -3,3 +3,6 @@ figure{
     height: 250px;
     margin: auto !important;
 }
+.title{
+    font-family: 'Abril Fatface', cursive;
+}

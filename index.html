@@ -1,19 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <!-- bootstrap -->
+    <title>SportStreet V</title>
+    <!-- custom -->
     <link rel="stylesheet" href="./src/assets/custom.css">
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface&display=swap" rel="stylesheet"> 
+    <!-- bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
     <div id="app">
-        <header>
-            <div class="container-fluid">
-                <div class="row bg-dark p-3">
+        <header class="bg-dark p-4">
+            <!-- <div class="container-fluid">
+                <div class="row">
                     <div class="col-6">
                         <span class="text-white">Sport Street V</span>
                     </div>
@@ -31,62 +34,64 @@
                         </ul>
                     </div>
                 </div>
-            </div>
+            </div> -->
+            <h1 class="text-center text-white title">
+                <span> SportStreet V </span>
+            </h1>
         </header>
         <section>
             <div class="container mt-5">
-                <div class="float-center">
-                    <h1>Tienda Online de Pc`s</h1>
-                    <p>
-                        Te encantraria tener una pc que sea la enviadia de todos, pues aqui podras encontrar todos los componentes que necesites y al mejor precio
+                <div class="text-center pb-4">
+                    <h1><dt> Tienda Online de Tarjetas Gráficas </dt></h1>
+                    <p class="lead">
+                        No encuentras una <strong><em> Tarjeta Gráfica </em></strong> que vaya deacuerdo a tus necesidades
+                        entonces estas en el lugar adecuado ya que aquí podras encontrar tando tarjetas
+                        para diseño 3d y 2d e ilustraciones, o si simpletes la quieres para que corra tu videojuego porsupuiesto que la tenemos 
+                        y todo aquí en <b><em> SportStreet V </em></b>. 
                     </p>
                 </div>
-                <nav aria-label="breadcrumb">
+                <!-- <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
                         <li class="breadcrumb-item"><a href="#">Library</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Data</li>
                     </ol>
-                </nav>
+                </nav> -->
                 <div class="row">
                     <template v-for="tarjeta in tarjetas">
-                        <div class="col-4 mb-3">
-                        <!-- <div class="card-deck mb-3"> -->
+                        <div class="col-md-6 col-lg-4 mb-3">
                             <div class="card">
                                 <div class="card-header bg-dark text-white">
                                     <h5 class="text-center">
                                         {{ tarjeta.titulo }}
                                     </h5>
                                 </div>
-                                <figure class="mt-2 w-75" style="border-bottom: 1px #dfdfdf solid">
-                                    <img v-bind:src="tarjeta.imagen" class="card-img-top" alt="...">
-                                </figure>
-                                <div class="card-body">
+                                <template v-if="tarjeta.width">
+                                    <figure class="p-2 w-75">
+                                        <img v-bind:src="tarjeta.imagen" class="card-img-top" alt="...">
+                                    </figure>
+                                </template>
+                                <template v-else>
+                                    <figure class="p-2">
+                                        <img v-bind:src="tarjeta.imagen" class="card-img-top" alt="...">
+                                    </figure>
+                                </template>
+                                <div class="card-body" style="border-top: 1px #dfdfdf solid">
                                     <p class="card-text">
-                                        <p>
-                                            <button class="btn btn-secondary btn-block" type="button" @click="hoverCard">
-                                                <h6>Descripción</h6>
+                                        <div class="dropdown">
+                                            <button class="btn btn-outline-dark dropdown-toggle btn-block" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Ver Descripción <span class="badge badge-primary" title="Puntuación"><i class="fas fa-star text-warning"></i> {{ tarjeta.puntuacion }} </span>
                                             </button>
-                                            <!-- Button trigger modal -->
-                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalScrollable">
-                                                Launch demo modal
-                                            </button>
-                                            <!-- <button class="btn btn-secondary btn-block" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                                                <h6>Descripción</h6>
-                                            </button> -->
                                             
-                                        </p>
-                                        <!-- <div class="collapse" id="collapseExample"> -->
-                                            <!-- <div class="card card-body"> -->
-                                            <div v-if="mostrar">
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
                                                 <ul v-for="descripcion in tarjeta.descripcion">
-                                                    <hover-card :descripcion="descripcion">
-                                                        <li>{{ descripcion }}</li>
-                                                    </hover-card>
+                                                    <li>{{ descripcion }}</li>
                                                 </ul>
                                             </div>
-                                        <!-- </div> -->
-                                        <a :href="tarjeta.url" class="btn btn-success btn-block btn-lg mt-3">COMPRA YA! EN AMAZON</a>
+                                        </div>
+                                        <a :href="tarjeta.url" target="_blank" class="btn btn-warning btn-block btn-lg mt-3">
+                                            <i class="fas fa-shopping-cart"></i> COMPRA YA! EN AMAZON
+                                        </a>
                                     </p>
                                 </div>
 
@@ -96,84 +101,22 @@
                 </div>
             </div>
         </section>
-        <footer class="bg-dark mt-5">
-            <div class="container-fluid">
-                <div class="row text-white">
-
-                    <div class="col-4">
-                        Hola
-                    </div>
-                    <div class="col-4">
-                        Hola
-                    </div>
-                    <div class="col-4">
-                        Hola
-                    </div>
-                </div>
+        <footer class="bg-dark mt-5 p-3">
+            <div class="container text-white text-center">
+                <p>Utilizamos cookies propias y de terceros para que tengas una mejor experiencia</p>
             </div>
         </footer>
     </div>
     <!-- vue -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script>
-    Vue.component('hover-card', {
-        props: [ 'descripcion' ],
-        methods: {
-            
-        },
-        template: `
-        
-    <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalScrollableTitle">Modal title</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    ...
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-        <div class="modal" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Modal title</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p>{{descripcion}}</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-                </div>
-            </div>
-        </div>
-        `,
-        
-    })
     let app = new Vue({
         el: '#app',
         data: {
-            mostrar: false,
             tarjetas: [
                 {
-                    imagen: 'https://m.media-amazon.com/images/I/81D46VNLb9L._AC_UY218_ML3_.jpg',
-                    titulo: 'Tarjeta gráfica EVGA GeForce RTX 2070 Black Gaming, con ventilador Dual HDB',
+                    imagen: 'https://images-na.ssl-images-amazon.com/images/I/81QnPIBbZML._AC_SL1500_.jpg',
+                    titulo: 'MSI Gaming GeForce GTX 1660 Ti 192-bit HDMI/DP 6GB GDRR6 HDCP Support DirectX 12 Dual Fan VR Ready OC Graphics Card (GTX 1660 TI Ventus XS 6G OC)',
                     url: '1',
                     descripcion: [
                         'Circuito integrado: AMD Radeon RX 580',
@@ -182,11 +125,13 @@
                         'XFX placa trasera personalizada',
                         'tecnología de refrigeración XFX disipación doble',
                     ],
+                    puntuacion: '4.5',
+                    width: false,
                 },
                 {
                     imagen: 'https://images-na.ssl-images-amazon.com/images/I/71WA8Pm9AoL._AC_SL1200_.jpg',
                     titulo: 'Tarjeta gráfica EVGA GeForce RTX 2070 Black Gaming, con ventilador Dual HDB',
-                    url: '2',
+                    url: 'https://www.amazon.com/Tarjeta-gr%C3%A1fica-RTX-2070-ventilador/dp/B07J63W42X/ref=as_li_ss_tl?__mk_es_US=%C3%85M%C3%85%C5%BD%C3%95%C3%91&keywords=graphics+cards&qid=1569709276&sr=8-2&linkCode=sl1&tag=floresam-20&linkId=77aee5e91fd389f3116e9119dd4d1c67&language=es_US',
                     descripcion: [
                         'La arquitectura NVIDIA Turing GPU ofrece un rendimiento hasta 3 veces más rápido que las tarjetas gráficas de la generación anterior.',
                         'Real-Time RAY TRACING in games for cutting-edge, hyper-realistic graphics',
@@ -194,11 +139,13 @@
                         'El LED RGB ajustable ofrece opciones de configuración para todas las necesidades de iluminación de su PC.',
                         'Diseñado para EVGA Precision X1 – La nueva utilidad de afinación de EVGA supervisa tu tarjeta gráfica y te da la potencia para overclock como un profesional.',
                     ],
+                    puntuacion: '4.2',
+                    width: true,
                 },
                 {
                     imagen: 'https://images-na.ssl-images-amazon.com/images/I/71Tw4qKcixL._AC_SL1500_.jpg',
                     titulo: 'Gigabyte GeForce GTX 1660 OC 6G, 2 ventiladores Windforce, 6 GB 192 bit GDDR5, Gv-N1660OC-6GD',
-                    url: '3',
+                    url: 'https://www.amazon.com/Tarjeta-Gigabyte-ventiladores-Windforce-Gv-N1660OC-6GD/dp/B07P76G428/ref=as_li_ss_tl?__mk_es_US=%C3%85M%C3%85%C5%BD%C3%95%C3%91&keywords=graphics+cards&qid=1569709276&sr=8-3&linkCode=sl1&tag=floresam-20&linkId=5359aa31390371d99f15bf09855ba460&language=es_US',
                     descripcion: [
                         'Alimentado por GeForce GTX 1660 integrado con GDDR5 de 6 GB',
                         'Windforce 2 sistemas de refrigeración con ventiladores giratorios alternativos',
@@ -206,33 +153,53 @@
                         '6 GB 192-bit GDDR5',
                         '1 x HDMI, 3 x DisplayPort.',
                     ],
+                    puntuacion: '4.7',
+                    width: false,
                 },
                 {
-                    imagen: 'https://images-na.ssl-images-amazon.com/images/I/71Tw4qKcixL._AC_SL1500_.jpg',
-                    titulo: 'Gigabyte GeForce GTX 1660 OC 6G, 2 ventiladores Windforce, 6 GB 192 bit GDDR5, Gv-N1660OC-6GD',
-                    url: '3',
+                    imagen: 'https://m.media-amazon.com/images/I/51whZ-ylt8L._AC_UY218_ML3_.jpg',
+                    titulo: 'MSI Gaming GeForce RTX 2060 192-bit HDMI/DP Ray Tracing Turing Architecture Graphics Card (RTX 2060 VENTUS 6G OC)',
+                    url: 'https://www.amazon.com/GeForce-RTX-2060-Architecture-VENTUS/dp/B07MC23VS4/ref=as_li_ss_tl?__mk_es_US=%C3%85M%C3%85%C5%BD%C3%95%C3%91&keywords=graphics+cards&qid=1569707703&sr=8-12&linkCode=sl1&tag=floresam-20&linkId=cc4c4c7ff2ec751fa4ad5264fc9ee783&language=es_US',
                     descripcion: [
-                        'Alimentado por GeForce GTX 1660 integrado con GDDR5 de 6 GB',
-                        'Windforce 2 sistemas de refrigeración con ventiladores giratorios alternativos',
-                        'Controles intuitivos con motor AORUS',
-                        '6 GB 192-bit GDDR5',
-                        '1 x HDMI, 3 x DisplayPort.',
+                        'Chipset: NVIDIA GeForce RTX 2060.',
+                        'Relojes centrales: 1710 MHz / 14 Gbps',
+                        'Interfaz de memoria: 192 bits.',
+                        'Memoria de vídeo: 6 GB GDDR6.',
+                        'Salida: DisplayPort x 3 (v1,4) / HDMI 2.0b x 1',
                     ],
+                    puntuacion: '4.4',
+                   width: false,
+                },
+                {
+                    imagen: 'https://images-na.ssl-images-amazon.com/images/I/71BbMERkdUL._AC_SL1500_.jpg',
+                    titulo: 'Tarjeta gráfica NVIDIA Titan RTX',
+                    url: 'https://www.amazon.com/Tarjeta-gr%C3%A1fica-NVIDIA-Titan-RTX/dp/B07L8YGDL5/ref=as_li_ss_tl?__mk_es_US=%C3%85M%C3%85%C5%BD%C3%95%C3%91&keywords=graphics+cards&qid=1569709276&sr=8-5&linkCode=sl1&tag=floresam-20&linkId=267ac176c899d502d43dab3b94e95549&language=es_US',
+                    descripcion: [
+                        'Arquitectura NVIDIA Turing',
+                        '4608 Núcleos NVIDIA CUDA que funcionan a 1770 MHz reloj de impulso',
+                        'Nuevos 72 núcleos de RT para acelerar el rastreo de ray-trace',
+                        '576 Cores de tensor para aceleración AI',
+                        '24 GB de memoria GDDR6 que funciona a 14 Gbps y tiene un ancho de banda de memoria de hasta 672 GB/s',
+                    ],
+                    puntuacion: '4.3',
+                    width: false,
+                },
+                {
+                    imagen: 'https://images-na.ssl-images-amazon.com/images/I/81aQTxxcCJL._AC_SL1500_.jpg',
+                    titulo: 'Sapphire 11265-05-20G, Radeon Pulse RX 580 8GB GDDR5 Dual HDMI / DVI-D / DUAL DP OC con placa posterior (UEFI) tarjeta gráfica PCI-E',
+                    url: 'https://www.amazon.com/Sapphire-11265-05-20G-posterior-tarjeta-gr%C3%A1fica/dp/B06ZZ6FMF8/ref=as_li_ss_tl?__mk_es_US=%C3%85M%C3%85%C5%BD%C3%95%C3%91&keywords=graphics+cards&qid=1569709276&sr=8-8&linkCode=sl1&tag=floresam-20&linkId=4e5caaa30cef9e93dbecbf5ab5337ffa&language=es_US',
+                    descripcion: [
+                        '2 x HDMI; 1 x DVI-D; 2 x DP',
+                        '256 bits Memoria camión',
+                        'Tecnología de refrigeración: Dual Fan',
+                    ],
+                    puntuacion: '4.5',
+                    width: false,
                 },
             ]
         },
         methods: {
-            hoverCard: function(){
-                if(this.mostrar){
-
-                    this.mostrar += ''
-                    this.mostrar += false
-                }else{
-                    this.mostrar += ''
-                    this.mostrar += true
-                }
-                
-            }
+           
         },
 
     })
@@ -241,5 +208,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <!-- font awesome -->
+    <script src="https://kit.fontawesome.com/5f79f2543b.js" crossorigin="anonymous"></script>
 </body>
 </html>

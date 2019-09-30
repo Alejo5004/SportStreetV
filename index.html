@@ -7,7 +7,7 @@
     <meta desciption="Todos los componentes externos e internos  que necesites para tu pc lo encontraras aqui a precios super bajos y todo de la mejor calidad ">
     <title>SportStreet V</title>
     <!-- custom -->
-    <link rel="stylesheet" href="./src/assets/css/custom.css">
+    <link rel="stylesheet" href="./src/css/custom.css">
     <!-- google fonts -->
     <link href="https://fonts.googleapis.com/css?family=Abril+Fatface&display=swap" rel="stylesheet"> 
     <!-- bootstrap -->
@@ -54,7 +54,7 @@
                                 </a>
                                 <div class="card-body border-img">
                                     <p class="card-text">
-                                        <a :href="categoria.url" class="btn btn-primary btn-block mt-3">
+                                        <a :href="categoria.url" class="btn btn-primary btn-block">
                                             Ver Ya!
                                         </a>
                                     </p>
@@ -84,21 +84,23 @@
                 {
                     imagen: 'https://images-na.ssl-images-amazon.com/images/I/81QnPIBbZML._AC_SL1500_.jpg',
                     titulo: 'Tarjetas Gráficas',
-                    url: './tarjetas-gráficas/',
+                    url: './tarjetas-gráficas',
                     width: false,
                 },
                 {
                     imagen: 'https://images-na.ssl-images-amazon.com/images/I/81DJMwMcd5L._AC_SL1500_.jpg',
                     titulo: 'Monitores',
-                    url: './monitores/',
+                    url: './monitores',
+                    width: false,
+                },
+                {
+                    imagen: 'https://images-na.ssl-images-amazon.com/images/I/61QQMg72PAL._AC_SL1000_.jpg',
+                    titulo: 'RAM',
+                    url: './memorias-ram',
                     width: false,
                 },
             ]
         },
-        methods: {
-           
-        },
-
     })
     </script>
     <!-- bootstrap -->

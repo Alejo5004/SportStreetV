@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta desciption="Mira todas las Tarjetas Gráficas que Tenemos para ti a unos precios espectaculares y de una calidad sinigual.">
+    <title>Memorias Ram - SportStreet V</title>
+    <!-- custom -->
+    <link rel="stylesheet" href="../src/css/custom.css" type="text/css" title="para ram">
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface&display=swap" rel="stylesheet"> 
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <div id="app">
+        <header class="bg-dark p-4">
+            <h1 class="text-center text-white title">
+                <span> SportStreet V </span>
+            </h1>
+        </header>
+        <section>
+            <div class="container mt-5">
+                <div class="text-center pb-4">
+                    <h1><dt> Memorias Ram </dt></h1>
+                    <p class="lead">
+                       ¿Sinete que a su pc le falta mas memoria ram?. Pues aquí podra encontrar una basta colección de productos que pueden serle de gran ayuda para que su computador mejore en la memoria ram. 
+                    </p>
+                </div>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="../">Inicio</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Memorias Ram</li>
+                    </ol>
+                </nav>
+                <div class="row">
+                    <template v-for="ram in rams">
+                        <div class="col-md-6 col-lg-4 mb-3">
+                            <div class="card">
+                                <div class="card-header bg-dark text-white">
+                                    <h5 class="text-center">
+                                        {{ ram.titulo }}
+                                    </h5>
+                                </div>
+                                <a :href="ram.url" target="_blank" rel="nofollow">
+                                    <template v-if="ram.width">
+                                        <figure class="px-2 pt-2 w-75">
+                                            <img v-bind:src="ram.imagen" class="card-img-top" alt="...">
+                                        </figure>
+                                    </template>
+                                    <template v-else>
+                                        <figure class="px-2 pt-2">
+                                            <img v-bind:src="ram.imagen" class="card-img-top" alt="...">
+                                        </figure>
+                                    </template>
+                                </a>
+                                <div class="card-body border-img">
+                                    <p class="card-text">
+                                        <div class="dropdown">
+                                            <button class="btn btn-outline-dark dropdown-toggle btn-block" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Ver Descripción <span class="badge badge-primary" title="Puntuación"><i class="fas fa-star text-warning"></i> {{ ram.puntuacion }} </span>
+                                            </button>
+                                            
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                                <ul v-for="descripcion in ram.descripcion">
+                                                    <li>{{ descripcion }}</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <a :href="ram.url" target="_blank" rel="nofollow" class="btn btn-warning btn-block btn-lg mt-3">
+                                            <i class="fas fa-shopping-cart"></i> COMPRA YA! EN AMAZON
+                                        </a>
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </template>
+                </div>
+            </div>
+        </section>
+        <footer class="bg-dark mt-5 p-3">
+            <div class="container text-white text-center">
+                <p>
+                    Utilizamos cookies propias y de terceros para que tengas una mejor experiencia
+                </p>
+            </div>
+        </footer>
+    </div>
+    <!-- vue -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+    let app = new Vue({
+        el: '#app',
+        data: {
+            rams: [
+                {
+                    imagen: 'https://images-na.ssl-images-amazon.com/images/I/61QQMg72PAL._AC_SL1000_.jpg',
+                    titulo: 'TEAMGROUP T-Force Delta RGB DDR4 Desktop módulo de memoria RAM',
+                    url: 'https://www.amazon.com/TEAMGROUP-T-Force-Desktop-m%C3%B3dulo-memoria/dp/B07T26FP12/ref=as_li_ss_tl?__mk_es_US=%C3%85M%C3%85%C5%BD%C3%95%C3%91&keywords=ram&qid=1569803308&smid=AWD7GDDT7Q2ZT&sr=8-4&linkCode=sl1&tag=floresam-20&linkId=efc36c8280c58228f20160d9c98284b7&language=es_US',
+                    descripcion: [
+                        'Full frame 120° ultra wide angle lighting with built-in Force Flow RGB lighting effect',
+                        'Aluminum alloy heat spreader with asymmetric minimalist design',
+                        'Supports T-FORCE BLITZ control (Beta version) / ASUS Aura Sync software synchronization',
+                        'Supports XMP2.0 one-click overclocking technology; QVL approved by all mainstream motherboard manufacturers',
+                        'Lifetime warranty ',
+                    ],
+                    puntuacion: '4.5',
+                    width: false,
+                },
+                {
+                    imagen: 'https://images-na.ssl-images-amazon.com/images/I/81mSADb0qhL._AC_SL1500_.jpg',
+                    titulo: 'Corsair Vengeance LPX 16GB (2x8GB) DDR4 DRAM 3000MHz C15 Kit de memoria de escritorio - negro (CMK16GX4M2B3000C15) ',
+                    url: 'https://www.amazon.com/Corsair-Vengeance-3000MHz-memoria-escritorio/dp/B0134EW7G8/ref=as_li_ss_tl?__mk_es_US=%C3%85M%C3%85%C5%BD%C3%95%C3%91&keywords=ram&qid=1569806349&sr=8-1&linkCode=sl1&tag=floresam-20&linkId=c466e7706d5cc1e54a3be4ad927dc499&language=es_US',
+                    descripcion: [
+                        'Asegúrate de que esto coincide al ingresar tu número de modelo.',
+                        'Diseñado para overclocking de alto rendimiento',
+                        'Diseñado para gran aspecto',
+                        'Rendimiento y compatibilidad',
+                        'Diseño de disipador de calor de perfil bajo ',
+                    ],
+                    puntuacion: '4.5',
+                    width: false,
+                },
+                {
+                    imagen: 'https://images-na.ssl-images-amazon.com/images/I/81EEpt-xy0L._AC_SL1500_.jpg',
+                    titulo: 'Corsair CMW32GX4M2C3200C16 Vengeance RGB PRO 32GB (2x16GB) DDR4 3200 (PC4-25600) C16 - Memoria para escritorio, color negro',
+                    url: 'https://www.amazon.com/Corsair-CMW32GX4M2C3200C16-Vengeance-2x16GB-PC4-25600/dp/B07GTG2T7L/ref=as_li_ss_tl?__mk_es_US=%C3%85M%C3%85%C5%BD%C3%95%C3%91&keywords=ram&qid=1569806575&sr=8-3&linkCode=sl1&tag=floresam-20&linkId=a40acf8986c6ee1dc24b798642c715cd&language=es_US',
+                    descripcion: [
+                        'Asegúrate de que esto coincide al ingresar tu número de modelo.',
+                        'Dynamic Multi-Zone RGB Lighting',
+                        'Software de próxima generación',
+                        'PCB de rendimiento personalizado',
+                        'Memoria con pantalla ajustada.',
+                        'Máximo ancho de banda y tiempos de respuesta ajustados ',
+                    ],
+                    puntuacion: '4.7',
+                    width: false,
+                },
+                {
+                    imagen: 'https://images-na.ssl-images-amazon.com/images/I/71kj%2BGH57-L._AC_SL1500_.jpg',
+                    titulo: 'Corsair Vengeance memoria para computadora de escritorio, 16 GB (2 x 8 GB), DDR3, 1600 MHz, PC3 12800, Negro ',
+                    url: 'https://www.amazon.com/Corsair-Vengeance-memoria-computadora-escritorio/dp/B006EWUO22/ref=as_li_ss_tl?__mk_es_US=%C3%85M%C3%85%C5%BD%C3%95%C3%91&keywords=ram&qid=1569806767&sr=8-6&linkCode=sl1&tag=floresam-20&linkId=b803c7e1a0deefe1f9b816119b9fa645&language=es_US',
+                    descripcion: [
+                        'Asegúrate de que esto coincide al ingresar tu número de modelo.',
+                        'Superior overclockability through careful screening',
+                        'Optimized for Compatibility with the Latest CPUs and Motherboards',
+                        'XMP Memory Profile for simple, safe overclocking',
+                        'World-famous reliability and performance, Lifetime limited warranty ',
+                    ],
+                    puntuacion: '4.4',
+                   width: false,
+                },
+                {
+                    imagen: 'https://images-na.ssl-images-amazon.com/images/I/61LJcnTZJzL._AC_SL1000_.jpg',
+                    titulo: 'Kingston HyperX Fury, Negro',
+                    url: 'https://www.amazon.com/HX426C16FBK2-32-Kingston-HyperX-Negro/dp/B06XKSPW5V/ref=as_li_ss_tl?__mk_es_US=%C3%85M%C3%85%C5%BD%C3%95%C3%91&keywords=ram&qid=1569814641&sr=8-11&linkCode=sl1&tag=floresam-20&linkId=f147bf03daa096936ec80782a093d48b&language=es_US',
+                    descripcion: [
+                        'Asegúrate de que esto coincide al ingresar tu número de modelo.',
+                        'Optimized for Intels 200 series and X99 chipsets',
+                        'Cost efficient high performance DDR4 upgrade',
+                        'At 1.2V, low power consumption compared to DDR31',
+                        'Stylish, low profile heat spreader in signature FURY asymmetrical design ',
+                    ],
+                    puntuacion: '4.7',
+                    width: false,
+                },
+                {
+                    imagen: 'https://images-na.ssl-images-amazon.com/images/I/61Mo5QjeXwL._AC_SL1062_.jpg',
+                    titulo: 'G.SKILL TridentZ RGB Series 16GB (2 x 8GB) 288-Pin DDR43200MHz (PC4 25600) memoria de escritorio modelo F4-3200C16D-16GTZR ',
+                    url: 'https://www.amazon.com/G-SKILL-TridentZ-DDR43200MHz-escritorio-F4-3200C16D-16GTZR/dp/B01MTDEYHU/ref=as_li_ss_tl?__mk_es_US=%C3%85M%C3%85%C5%BD%C3%95%C3%91&keywords=ram&qid=1569814777&sr=8-15&linkCode=sl1&tag=floresam-20&linkId=0c57567cca518584955a3c5cd31bc39b&language=es_US',
+                    descripcion: [
+                        'Asegúrate de que esto coincide al ingresar tu número de modelo.',
+                        'DDR4 3200 (PC4 25600)',
+                        'De 16 – 18, 18 – 38',
+                        'Latencia CAS 16',
+                        'Voltaje 1.35 V ',
+                    ],
+                    puntuacion: '4.5',
+                    width: false,
+                },
+            ]
+        },
+        methods: {
+           
+        },
+
+    })
+    </script>
+    <!-- bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <!-- font awesome -->
+    <script src="https://kit.fontawesome.com/5f79f2543b.js" crossorigin="anonymous"></script>
+</body>
+</html>

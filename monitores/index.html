@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta desciption="¿Te gustaría tener una nueva pantalla para tu pc?. Porque aqui podras qncontrar la pantalla de pc que se adapte mejor a tus necesidades.">
+    <title>Monitores - SportStreet V</title>
+    <!-- custom -->
+    <link rel="stylesheet" href="./src/assets/css/custom.css">
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface&display=swap" rel="stylesheet"> 
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <div id="app">
+        <header class="bg-dark p-4">
+            <h1 class="text-center text-white title">
+                <span> SportStreet V </span>
+            </h1>
+        </header>
+        <section>
+            <div class="container mt-5">
+                <div class="text-center pb-4">
+                    <h1><dt> Monitores </dt></h1>
+                    <p class="lead">
+                        ¿Necesitas cambiar una nueva pantalla para tu computador?. Entonces estas en el lugar correcto porque aquí encontraras los mejores monitores para que tu vista este descansada. 
+                    </p>
+                </div>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="../">Inicio</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Monitores</li>
+                    </ol>
+                </nav>
+                <div class="row">
+                    <template v-for="monitor in monitores">
+                        <div class="col-md-6 col-lg-4 mb-3">
+                            <div class="card">
+                                <div class="card-header bg-dark text-white">
+                                    <h5 class="text-center">
+                                        {{ monitor.titulo }}
+                                    </h5>
+                                </div>
+                                <a :href="monitor.url" target="_blank" rel="nofollow">
+                                    <template v-if="monitor.width">
+                                        <figure class="px-2 pt-2 w-75">
+                                            <img v-bind:src="monitor.imagen" class="card-img-top" alt="...">
+                                        </figure>
+                                    </template>
+                                    <template v-else>
+                                        <figure class="px-2 pt-2">
+                                            <img v-bind:src="monitor.imagen" class="card-img-top" alt="...">
+                                        </figure>
+                                    </template>
+                                </a>
+                                <div class="card-body border-img">
+                                    <p class="card-text">
+                                        <div class="dropdown">
+                                            <button class="btn btn-outline-dark dropdown-toggle btn-block" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Ver Descripción <span class="badge badge-primary" title="Puntuación"><i class="fas fa-star text-warning"></i> {{ monitor.puntuacion }} </span>
+                                            </button>
+                                            
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                                <ul v-for="descripcion in monitor.descripcion">
+                                                    <li>{{ descripcion }}</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <a :href="monitor.url" target="_blank" rel="nofollow" class="btn btn-warning btn-block btn-lg mt-3">
+                                            <i class="fas fa-shopping-cart"></i> COMPRA YA! EN AMAZON
+                                        </a>
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </template>
+                </div>
+            </div>
+        </section>
+        <footer class="bg-dark mt-5 p-3">
+            <div class="container text-white text-center">
+                <p>
+                    Utilizamos cookies propias y de terceros para que tengas una mejor experiencia
+                </p>
+            </div>
+        </footer>
+    </div>
+    <!-- vue -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+    let app = new Vue({
+        el: '#app',
+        data: {
+            monitores: [
+                {
+                    imagen: 'https://images-na.ssl-images-amazon.com/images/I/81DJMwMcd5L._AC_SL1500_.jpg',
+                    titulo: 'HP 23.8-inch FHD IPS Monitor de 23,8 pulgadas FHD IPS con inclinación/ajuste de altura y altavoces integrados (VH240a, negro)',
+                    url: 'https://www.amazon.com/23-8-inch-inclinaci%C3%B3n-altavoces-integrados-VH240a/dp/B072M34RQC/ref=as_li_ss_tl?__mk_es_US=%C3%85M%C3%85%C5%BD%C3%95%C3%91&keywords=computer+screens&qid=1569800125&sr=8-4&linkCode=sl1&tag=floresam-20&linkId=e6bdf22799a43786b7746363c8d93401&language=es_US',
+                    descripcion: [
+                        'Monitor: 23.8-inch diagonal micro-edge IPS Full HD (1920 x 1080); una experiencia de visualización ultra gran angular proporciona para una perfecta monitores múltiples configuraciones.',
+                        'Espacio de trabajo ajustable: sacar el máximo partido de su espacio de trabajo con práctica ergonomía incluyendo ajustes de inclinación, altura, giro y pivote',
+                        'Tiempo de respuesta y frecuencia de barrido: 5 ms y 60 Hz; consiga un suave que de imagen nítida y líquido sin desenfoque.',
+                        'Puertos: HDMI, VGA, y HDCP soporte ayudarle a mantenerse conectado.',
+                        'Audio: altavoces integrados; obtener gran incorporada de audio de los altavoces integrados.',
+                        'Características: Retroiluminación LED sin mercurio, vidrio de visualización sin arsénico, ambiental y el diseño de la lámpara halógena de bajo voltaje promover la eficiencia energética. ',
+                    ],
+                    puntuacion: '4.3',
+                    width: false,
+                },
+                {
+                    imagen: 'https://images-na.ssl-images-amazon.com/images/I/91tb3AvQSRL._AC_SL1500_.jpg',
+                    titulo: 'HP Pavilion, Monitor IPS LED HDMI, VGA de 21.5 pulgadas, Negro',
+                    url: 'https://www.amazon.com/Pavilion-Monitor-HDMI-21-5-pulgadas-Negro/dp/B015WCV70W/ref=as_li_ss_tl?__mk_es_US=%C3%85M%C3%85%C5%BD%C3%95%C3%91&keywords=computer+screens&qid=1569800858&sr=8-8&linkCode=sl1&tag=floresam-20&linkId=024749d4b715627113611db6bd0e7685&language=es_US',
+                    descripcion: [
+                        'Monitor: 21.5-inch diagonal Full HD (1920x1080) IPS; Enjoy vibrant images with 178-degree wide-viewing angles',
+                        'Resolution and aspect ratio: Full HD and 16:9; 2 million pixels for crystal-clear visuals and vibrant image quality',
+                        'Response time: 7ms with overdrive; Get a smooth picture that looks crisp and fluid without motion blur.Brightness - 250 nits.Static contrast ratio- Up to 1000:1. Dynamic contrast ratio- Up to 8,000,000:1',
+                        'Ports: VGA, HDMI, and HDCP support help you stay connected;Power Consumption: 20 Watt',
+                        'Environmental features: Mercury-free LED backlighting, Arsenic-free monitor glass, and the low halogen design promote energy efficiency',
+                        'NOTE: Please refer to the user manual for trouble shooting steps. ',
+                    ],
+                    puntuacion: '4.3',
+                    width: false,
+                },
+                {
+                    imagen: 'https://images-na.ssl-images-amazon.com/images/I/91c8NF6ykfL._AC_SL1500_.jpg',
+                    titulo: 'Sceptre 27" Curved 75Hz LED Monitor HDMI VGA Altavoces integrados, Edge-Less Metal Black 2019 (C275W-1920RN) ',
+                    url: 'https://www.amazon.com/Sceptre-Altavoces-integrados-Edge-Less-C275W-1920RN/dp/B07MTRQ6B3/ref=as_li_ss_tl?__mk_es_US=%C3%85M%C3%85%C5%BD%C3%95%C3%91&keywords=computer+screens&qid=1569801346&sr=8-17&linkCode=sl1&tag=floresam-20&linkId=01a54f5132143087ea7aeb4df3a2868f&language=es_US',
+                    descripcion: [
+                        'Monitor curvado de 27"',
+                        'Resolución Full HD de 1920 x 1080',
+                        'Hasta 75 Hz de velocidad de refresco.',
+                        'Puertos Hdmi, VGA y para auriculares',
+                        'Altavoces integrados ',
+                    ],
+                    puntuacion: '4.4',
+                    width: false,
+                },
+                {
+                    imagen: 'https://images-na.ssl-images-amazon.com/images/I/91JC-BoKQ7L._AC_SL1500_.jpg',
+                    titulo: 'LG Monitor IPS de 32 pulgadas',
+                    url: 'https://www.amazon.com/LG-Monitor-IPS-32-pulgadas/dp/B01BV1X9DG/ref=as_li_ss_tl?__mk_es_US=%C3%85M%C3%85%C5%BD%C3%95%C3%91&keywords=computer+screens&qid=1569800667&sr=8-6&linkCode=sl1&tag=floresam-20&linkId=c6e5170c363eed0e446ed246f9874239&language=es_US',
+                    descripcion: [
+                        'Monitor Full HD IPS de 32 pulgadas',
+                        'Entradas: puerto de pantalla, HDMI, d-sub, USB 2.0 (2), y USB 2.0 hasta',
+                        'Control en pantalla de la configuración del monitor',
+                        'Pantalla Split 2.0 para múltiples tareas',
+                        'Compatible con VESA para montaje en pared.',
+                        'Monitor IPS Full HD de 32 pulgadas',
+                        'Entradas: DisplayPort, HDMI, D-Sub, (2), USB 2.0 y USB 2.0 de hasta',
+                        'Control en pantalla de configuración del monitor',
+                        'Protector de Split 2.0 para multitarea',
+                        'Compatible con VESA para montaje en pared',
+                    ],
+                    puntuacion: '4.3',
+                    width: false,
+                },
+                {
+                    imagen: 'https://images-na.ssl-images-amazon.com/images/I/91EJOh6nrEL._AC_SL1500_.jpg',
+                    titulo: 'Sceptre E series E205W-1600 V1 Monitor de encendido LED de 20" con puertos HDMI, DVI y VGA',
+                    url: 'https://www.amazon.com/Sceptre-E205W-1600-V1-Monitor-encendido-puertos-HDMI/dp/B00S8W8QMG/ref=as_li_ss_tl?__mk_es_US=%C3%85M%C3%85%C5%BD%C3%95%C3%91&keywords=computer+screens&qid=1569801002&sr=8-7&linkCode=sl1&tag=floresam-20&linkId=46255650399f2235b1453e0cbcae9662&language=es_US',
+                    descripcion: [
+                        '16: 9 real resolución 1600 x 900',
+                        'Alta relación de contraste: 5.000.000: 1',
+                        'Entrada HDMI, DVI o VGA',
+                        'Construir en dos altavoces',
+                        'Montaje en pared VESA 100 ',
+                    ],
+                    puntuacion: '4.0',
+                    width: false,
+                },
+                {
+                    imagen: 'https://images-na.ssl-images-amazon.com/images/I/71r1E7x7PlL._AC_SL1500_.jpg',
+                    titulo: 'Monitor LED para Asus Class (21.5 pulgadas), Negro ',
+                    url: 'https://www.amazon.com/Monitor-para-Class-pulgadas-Negro/dp/B005BZNDOO/ref=as_li_ss_tl?__mk_es_US=%C3%85M%C3%85%C5%BD%C3%95%C3%91&keywords=computer+screens&pd_rd_i=B005BZNDOO&pd_rd_r=2b72cbbf-ba5b-4f60-aeaf-c6360b2d4687&pd_rd_w=gQU2e&pd_rd_wg=hWOAI&pf_rd_p=a6d018ad-f20b-46c9-8920-433972c7d9b7&pf_rd_r=8FMGD1MCTWW6TM9M47SA&qid=1569801491&linkCode=sl1&tag=floresam-20&linkId=6c4a0c32ec308d47d93d21e7ff11cc01&language=es_US',
+                    descripcion: [
+                        'Monitor/pantalla/proyector',
+                        'visualización LCD/19 – 29 inch',
+                    ],
+                    puntuacion: '4.3',
+                    width: false,
+                },
+            ]
+        },
+        methods: {
+           
+        },
+
+    })
+    </script>
+    <!-- bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <!-- font awesome -->
+    <script src="https://kit.fontawesome.com/5f79f2543b.js" crossorigin="anonymous"></script>
+</body>
+</html>
